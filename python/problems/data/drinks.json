@@ -1,0 +1,50 @@
+{
+  "ristretto": {
+    "water": 1,
+    "coffee": 1,
+    "mL": {
+      "single": 30,
+      "double": 60
+    }
+  },
+  "espresso": {
+    "coffee_ratio": 1,
+    "water_ratio": 2,
+    "mL": {
+      "single": 30,
+      "double": 60
+    }
+  },
+  "lungo": {
+    "coffee_ratio": 1,
+    "water_ratio": 3,
+    "mL": {
+      "single": 30,
+      "double": 60
+    }
+  },
+  "crema": {
+    "coffee_ratio": 1,
+    "water_ratio": 7,
+    "mL": {
+      "single": 30,
+      "double": 60
+    }
+  },
+  "cappuccino": {
+    "espresso_ratio": 1,
+    "milk_ratio": 2,
+    "mL": 165
+  },
+  "latte": {
+    "espresso_ratio": 1,
+    "milk_ratio": 2,
+    "mL": 240
+  },
+  "flat_white": {
+    "espresso_ratio": 1,
+    "milk_ratio": 2,
+    "espresso_amount": "double",
+    "mL": 165
+  }
+}
