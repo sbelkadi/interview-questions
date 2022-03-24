@@ -1,7 +1,7 @@
 {
   "ristretto": {
-    "water": 1,
-    "coffee": 1,
+    "coffee_ratio": 1,
+    "water_ratio": 1,
     "mL": {
       "single": 30,
       "double": 60
