@@ -27,14 +27,24 @@ if __name__ == "__main__":
 
       # test to see if the espresso machine recognized the drink order
       # the machine fails 10% of the time, so catch the exception
-      # machine_broken_1.get_drink_params(drink_order)
+      try:
+        params = machine_broken_1.get_drink_params(drink_order)
+        if any(param is None for param in params):
+          raise Exception("Drink order not recognized by espresso machine. Retrying...")
+      
+        # simulate time required to create drink
+        time_to_create_drink = machine_broken_1.time_to_create_drink(drink_order)
+        time.sleep(time_to_create_drink)
 
-      # simulate time required to create drink
-      time_to_create_drink = machine_broken_1.time_to_create_drink(drink_order)
-      time.sleep(time_to_create_drink)
-
-      print(f" [x] Done making {drink_order}!")
-      ch.basic_ack(delivery_tag=method.delivery_tag)
+        print(f" [x] Ahhh, that's a tasty {drink_order}!")
+        ch.basic_ack(delivery_tag=method.delivery_tag)
+      
+      except Exception as e:
+        print(f" [***] {e}")
+        if 'Retrying' in str(e):
+            ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+        else:
+            ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
 
   # basic_qos prefetch_count: number of messages that can be fetched on 1 queue
   # basic_consume: associate queue with callback function

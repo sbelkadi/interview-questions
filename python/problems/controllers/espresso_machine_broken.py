@@ -11,6 +11,6 @@ class EspressoMachineBroken(EspressoMachine):
     if random.random() < 0.1:
       return [None, None, None]
     else:
-      return super.get_drink_params(drink_name)
+      return super().get_drink_params(drink_name)
 
   
