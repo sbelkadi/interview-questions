@@ -1,13 +1,13 @@
-from types import List
+from typing import List
 import random
-from python.problems.controllers.espresso_machine import EspressoMachine
+from .espresso_machine import EspressoMachine
 
 class EspressoMachineBroken(EspressoMachine):
   def __init__(self, drink_list: dict = None):
-    super(self, drink_list)
+    super().__init__(drink_list)
     pass
 
-  def get_drink_params(self, drink_name: str) -> List[float, float, float]:
+  def get_drink_params(self, drink_name: str) -> List[float]:
     if random.random() < 0.1:
       return [None, None, None]
     else:

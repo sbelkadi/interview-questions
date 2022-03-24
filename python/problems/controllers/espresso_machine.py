@@ -116,18 +116,16 @@ class EspressoMachine:
         mL_milk = 0.0
         return mL_milk
 
-    def time_to_create_drink(self, drink_name: str):
-        if drink_name not in self._drink_list:
-            raise Exception(f"{drink_name} is not in known list of drinks.")
-        
+    def time_to_create_drink(self, drink_name: str):        
+        # ideally, get_drink_params should also return the order size so that this isn't necessary
         drink = self._drink_list[drink_name]
-
-        ingredients = [
-            drink._milk,
-            drink._water,
-            drink._coffee
-        ]
         
+        ingredients = [
+          drink._coffee,
+          drink._milk,
+          drink._water
+        ]
+
         time_sec = ((1/8) * drink._orderSize) + (5 * np.count_nonzero(ingredients))
 
         return time_sec
